@@ -1,0 +1,31 @@
+name: playeveryware/action-app-installation-pat
+description: Acquire a personal access token for a GitHub App installation
+
+inputs:
+  application-id:
+    description: Application id of the GitHub app
+    default: 239145
+    required: true
+  installation-id:
+    description: Installation id of the application
+    default: 29344490
+    required: true
+  private-key:
+    description: Private key for the application
+    required: true
+  scope:
+    description: Comma separated scopes for the access token
+    default: contents:read
+    required: true
+  repositories:
+    description: Comma separated repositories for which to scope the token
+    default: ${{ github.repository }}
+
+outputs:
+  token:
+    description: Access token for the installation
+
+runs:
+  using: node16
+  main: dist/index.js
+  post: dist/index.js
