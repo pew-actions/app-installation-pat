@@ -8,7 +8,6 @@ function parseScopes(scopes: string): object {
   const items = scopes.toLowerCase().split(',')
   for (const item of items) {
     const parts = item.split(':')
-    console.log(`S: ${item}`)
     if (parts.length != 2) {
       throw new Error(`Invalid scope '${item.trim()}'`)
     }
